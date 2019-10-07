@@ -533,11 +533,5 @@
             app:contentInsetStart="0dp"
             tools:visibility="gone" />
 
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/logo_anim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:background="@drawable/logo_anim" />
     </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>

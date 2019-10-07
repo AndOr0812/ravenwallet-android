@@ -185,39 +185,6 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         assetsAdapter = new AssetsAdapter(this, new ArrayList<Asset>());
         mAssetsRecycler.setAdapter(assetsAdapter);
 
-        imageLogo.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                final GifImageView logoAnim = findViewById(R.id.logo_anim);
-                if (logoAnim == null) return false;
-                try {
-                    Display display = getWindowManager().getDefaultDisplay();
-                    DisplayMetrics outMetrics = new DisplayMetrics();
-                    display.getMetrics(outMetrics);
-                    gifDrawable = new GifDrawable(getResources(), R.drawable.logo_anim);
-                    logoAnim.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, outMetrics.heightPixels));
-                    logoAnim.setImageDrawable(gifDrawable);
-                    logoAnim.setVisibility(View.VISIBLE);
-                    gifDrawable.start();
-                    setStatusBarGradiant(HomeActivity.this, android.R.color.black);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            setStatusBarGradiant(HomeActivity.this, android.R.color.transparent);
-                            logoAnim.setVisibility(View.GONE);
-                            gifDrawable.stop();
-                        }
-                    }, gifDrawable.getDuration());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    logoAnim.setVisibility(View.GONE);
-                    if (gifDrawable != null)
-                        gifDrawable.stop();
-                }
-                return false;
-            }
-        });
         mAssetCreation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
